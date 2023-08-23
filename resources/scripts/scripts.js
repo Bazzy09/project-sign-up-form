@@ -1,21 +1,27 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const passwordInput = document.getElementById('password');
-    const confirmPasswordInput = document.getElementById('confirm-password');
-    const errorMessage = document.querySelector('.error-message');
+document.addEventListener("DOMContentLoaded", function () {
+  const passwordInput = document.getElementById("password");
+  const confirmPasswordInput = document.getElementById("confirm-password");
+  const createAccountButton = document.getElementById("create-account");
+  const errorMessage = document.createElement("p");
+  errorMessage.className = "error-message";
+  errorMessage.style.color = "red";
+  errorMessage.style.display = "none";
 
-    confirmPasswordInput.addEventListener('input', function() {
-      if (passwordInput.value !== confirmPasswordInput.value) {
-        errorMessage.style.display = 'block';
-      } else {
-        errorMessage.style.display = 'red';
-      }
-    });
+  confirmPasswordInput.parentNode.appendChild(errorMessage);
 
-    const form = document.querySelector('form');
-    form.addEventListener('submit', function(event) {
-      if (passwordInput.value !== confirmPasswordInput.value) {
-        errorMessage.style.display = 'block';
-        event.preventDefault();
-      }
-    });
+  createAccountButton.addEventListener("click", function (event) {
+    if (passwordInput.value !== confirmPasswordInput.value) {
+      event.preventDefault();
+      errorMessage.textContent = "Passwords do not match!";
+      errorMessage.style.display = "block";
+    } else {
+      errorMessage.style.display = "none";
+      showWelcomeMessage(); 
+    }
   });
+
+  function showWelcomeMessage() {
+    const textSection = document.querySelector(".text-section");
+    textSection.innerHTML = "<h2>Welcome!</h2><p>Your account has been successfully created.</p>";
+  }
+});
