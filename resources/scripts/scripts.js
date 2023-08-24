@@ -22,6 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function showWelcomeMessage() {
     const textSection = document.querySelector(".text-section");
-    textSection.innerHTML = "<h2>Welcome!</h2><p>Your account has been successfully created.</p>";
+    textSection.innerHTML = "<h2>Welcome! Your account has been successfully created.</h2>";
   }
 });
